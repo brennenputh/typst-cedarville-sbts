@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="note" default-locale="en-US" page-range-format="chicago">
+  <info>
+    <title>Cedarville University SBTS Style Manual (Notes and Bibliography)</title>
+    <id>http://www.zotero.org/styles/cedarville-sbts-notes-bibliography-custom</id>
+    <link href="http://www.zotero.org/styles/cedarville-sbts-notes-bibliography-custom" rel="self"/>
+    <category citation-format="note"/>
+    <category field="theology"/>
+    <summary>Custom basic notes and bibliography style based on the Cedarville University School of Biblical and Theological Studies manual.</summary>
+    <updated>2026-10-24T00:00:00+00:00</updated>
+  </info>
+  <macro name="contributors">
+    <choose>
+      <if variable="author">
+        <names variable="author"><name and="text" delimiter=", " delimiter-precedes-last="always"/><substitute><names variable="editor"/><text variable="title"/></substitute></names>
+      </if>
+      <else-if variable="editor">
+        <names variable="editor"><name and="text" delimiter=", " delimiter-precedes-last="always"/><label form="short" prefix=", "/></names>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if type="article-journal article-magazine article-newspaper chapter paper-conference webpage post-weblog thesis" match="any"><text variable="title" quotes="true"/></if>
+      <else><text variable="title" font-style="italic"/></else>
+    </choose>
+  </macro>
+  <macro name="secondary">
+    <group delimiter=". ">
+      <names variable="editor"><label form="verb" text-case="capitalize-first" suffix=" "/><name and="text" delimiter=", "/></names>
+      <names variable="translator"><label form="verb" text-case="capitalize-first" suffix=" "/><name and="text" delimiter=", "/></names>
+    </group>
+  </macro>
+  <macro name="publication">
+    <choose>
+      <if type="article-journal">
+        <group delimiter=" "><text variable="container-title" font-style="italic"/><group delimiter=""><text variable="volume"/><group prefix=" (" suffix=")"><text variable="issue"/></group></group><group prefix="(" suffix=")"><date variable="issued"><date-part name="year"/></date></group></group>
+      </if>
+      <else-if type="chapter paper-conference" match="any">
+        <group delimiter=", "><group delimiter=" "><text term="in" text-case="capitalize-first"/><text variable="container-title" font-style="italic"/></group><names variable="editor"><label form="verb-short" suffix=" "/><name and="text"/></names></group>
+      </else-if>
+      <else-if type="article-magazine article-newspaper post-weblog webpage" match="any">
+        <group delimiter=", "><text variable="container-title" font-style="italic"/><date variable="issued" form="text"/></group>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="imprint">
+    <group delimiter=": "><text variable="publisher-place"/><group delimiter=", "><text variable="publisher"/><date variable="issued"><date-part name="year"/></date></group></group>
+  </macro>
+  <macro name="edition"><text variable="edition" suffix=" ed."/></macro>
+  <macro name="online"><choose><if variable="DOI"><text variable="DOI" prefix="https://doi.org/"/></if><else><text variable="URL"/></else></choose></macro>
+  <citation et-al-min="4" et-al-use-first="1" near-note-distance="5">
+    <layout suffix="." delimiter="; ">
+      <choose>
+        <if position="ibid"><text term="ibid" text-case="capitalize-first"/><text variable="locator" prefix=", "/></if>
+        <else-if position="subsequent"><group delimiter=", "><names variable="author"><name form="short" and="text"/><substitute><names variable="editor"/><text variable="title" form="short" font-style="italic"/></substitute></names><text variable="title" form="short" font-style="italic"/><text variable="locator"/></group></else-if>
+        <else>
+          <group delimiter=", ">
+            <text macro="contributors"/>
+            <text macro="title"/>
+            <text macro="edition"/>
+            <text macro="publication"/>
+            <choose><if type="book thesis report" match="any"><group prefix="(" suffix=")"><text macro="imprint"/></group></if><else-if type="chapter paper-conference" match="any"><group prefix="(" suffix=")"><text macro="imprint"/></group></else-if></choose>
+            <text variable="locator"/>
+            <text macro="online"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true" entry-spacing="1" line-spacing="1" subsequent-author-substitute="———" subsequent-author-substitute-rule="complete-all" et-al-min="100" et-al-use-first="100">
+    <sort><key macro="contributors"/><key variable="title"/></sort>
+    <layout suffix=".">
+      <group delimiter=". ">
+        <names variable="author"><name name-as-sort-order="first" sort-separator=", " and="text" delimiter=", " delimiter-precedes-last="always"/><substitute><names variable="editor"><name name-as-sort-order="first" sort-separator=", " and="text"/><label form="short" prefix=", "/></names></substitute></names>
+        <text macro="title"/>
+        <text macro="secondary"/>
+        <text macro="edition"/>
+        <text macro="publication"/>
+        <choose><if type="book thesis report chapter paper-conference" match="any"><text macro="imprint"/></if></choose>
+        <choose><if type="article-journal chapter" match="any"><text variable="page"/></if></choose>
+        <text macro="online"/>
+      </group>
+    </layout>
+  </bibliography>
+</style>
