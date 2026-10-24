@@ -77,15 +77,16 @@
     )
   )
   
-
   show quote: set pad(x: 0.5in)
   set enum(
     indent: 0.5in
   )
 
-
   show table: it => block(inset: (left: 0.5in), it)
 
+  set footnote.entry(
+    gap: 1.5em
+  )
   show footnote.entry: it => {
     let loc = it.note.location()
 

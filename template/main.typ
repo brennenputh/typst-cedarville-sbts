@@ -1,4 +1,4 @@
-#import "./src/sbts.typ": sbts
+#import "./sbts.typ": sbts
 
 #set document(title: [
   Paper Title
@@ -12,3 +12,5 @@
   course: [BTGE-3755-01 Theology 1],
   citation_file: path("./main.bib")
 )
+
+
