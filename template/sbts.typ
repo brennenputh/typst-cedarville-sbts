@@ -36,6 +36,27 @@
     spacing: 2.5em
   )
 
+  show bibliography: set par(
+    first-line-indent: 0pt,
+    hanging-indent: 0.5in
+  )
+
+  show bibliography: bib-it => {
+    show block: block-it => context {
+      // if it body is auto or styled()
+      if block-it.body == auto or block-it.body.func() == text(fill: red)[].func() {
+        block-it
+        // if its body isn't sequence(), for example: pdf-marker-tag
+      } else if block-it.body.func() != [].func() {
+        par(block-it.body)
+      } else {
+        par(block-it.body)
+      }
+    }
+
+    bib-it
+  }
+
   page(
     margin: (top: 2in),
     align(center,
