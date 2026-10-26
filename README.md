@@ -2,7 +2,10 @@
 
 The Cedarville University SBTS Style Guide, implemented in Typst!
 
-Note that there is no guarantee that this template will produce PDFs exactly matching the style guide, and each paper should be checked before being submitted. This template is not officially supported by the university and is liable to break at any time.
+> [!WARNING]
+> There is no guarantee that this template will produce PDFs exactly matching the style guide. Each paper should be checked before being submitted. 
+>
+> This template is not officially supported by the university and is liable to break at any time.
 
 This repository currently supports the latest version of Typst (0.15.1 at the time of writing) and the style guide from 2024-2025.
 
