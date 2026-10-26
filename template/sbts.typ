@@ -28,7 +28,9 @@
       below: 1em, 
       above: 2em)
   show heading.where(level: 1): set align(center)
+  // This is technically correct, but third-level headings should just be bolded text.
   show heading.where(level: 3): it => block(inset: (left: 0.5in), it)
+  show heading.where(level: 3): it => strong(it.body) + [ ]
 
   set par(
     first-line-indent: (amount: 0.5in, all: true),
