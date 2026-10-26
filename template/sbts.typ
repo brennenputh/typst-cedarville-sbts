@@ -45,8 +45,8 @@
         {
           stack(
             spacing: 2em,
-            text(upper(context(document.title))),
-            subtitle
+            upper(context(document.title)),
+            upper(subtitle)
           )
         },
         {
